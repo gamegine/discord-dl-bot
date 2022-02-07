@@ -1,5 +1,6 @@
 .devcontainer/
 config.json
+download/
 
 # Logs
 logs
