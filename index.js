@@ -13,7 +13,10 @@ const token = config.DISCORD_TOKEN || process.env.DISCORD_TOKEN
 // set download dir path
 const downloadDir =
 	config.DOWNLOAD_DIR || process.env.DOWNLOAD_DIR || "./download"
-
+// download files types (extensions)
+const downloadTypes = new RegExp(
+	config.FILETYPES || process.env.FILETYPES || /\.(jpg|jpeg|png|gif|mp4)$/
+)
 // create new discord client
 const client = new Discord.Client()
 
@@ -33,7 +36,7 @@ client.on("message", (msg) => {
 		// get only urls match type media
 		if (msgUrls) {
 			msgUrls.forEach((url) => {
-				if (url.match(/\.(jpg|jpeg|png|gif)$/)) {
+				if (url.match(downloadTypes)) {
 					urls.push(url)
 				}
 			})
@@ -42,7 +45,7 @@ client.on("message", (msg) => {
 	// add url from attachments
 	if (msg.attachments.size > 0) {
 		msg.attachments.forEach((attachment) => {
-			if (attachment.url.match(/\.(jpg|jpeg|png|gif)$/)) {
+			if (attachment.url.match(downloadTypes)) {
 				urls.push(attachment.url)
 			}
 		})
