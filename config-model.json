@@ -1,3 +1,5 @@
 {
-    "DISCORD_TOKEN": "YOUR BOT TOKEN"
+    "DISCORD_TOKEN": "YOUR BOT TOKEN",
+    "DOWNLOAD_DIR" : "./download",
+    "FILETYPES":"\\.(jpg|jpeg|png|gif|mp4)$"
 }
