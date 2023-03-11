@@ -18,7 +18,13 @@ const downloadTypes = new RegExp(
 	config.FILETYPES || process.env.FILETYPES || /\.(jpg|jpeg|png|gif|mp4)$/
 )
 // create new discord client
-const client = new Discord.Client()
+const client = new Discord.Client({
+	intents: [
+		Discord.GatewayIntentBits.Guilds,
+		Discord.GatewayIntentBits.GuildMessages,
+		Discord.GatewayIntentBits.MessageContent,
+	],
+})
 
 // discord events
 
@@ -27,7 +33,7 @@ const client = new Discord.Client()
 client.on("ready", () => console.log(`Logged in as ${client.user.tag}!`))
 
 // for each message process
-client.on("message", (msg) => {
+client.on("messageCreate", (msg) => {
 	// get all url to download
 	const urls = []
 	// get all url from message
@@ -51,10 +57,14 @@ client.on("message", (msg) => {
 		})
 	}
 	// log all files to download
+	// eslint-disable-next-line no-console
 	if (urls.length > 0) console.log(`start download:\n - ${urls.join("\n - ")}`)
 	// download all  files
 	urls.forEach((url) => {
-		const fileName = url.replace(/https?:\/+/, "").replaceAll("/", "-")
+		const fileName = url
+			.replace(/https?:\/+/, "")
+			.replaceAll("/", "-")
+			.replace("?.mp4", ".mp4")
 		const filePath = `${downloadDir}/${fileName}`
 
 		// skip if file exists
