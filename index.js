@@ -51,7 +51,7 @@ client.on("messageCreate", (msg) => {
 	// add url from attachments
 	if (msg.attachments.size > 0) {
 		msg.attachments.forEach((attachment) => {
-			if (attachment.url.match(downloadTypes)) {
+			if (attachment.name.match(downloadTypes)) {
 				urls.push(attachment.url)
 			}
 		})
@@ -64,7 +64,7 @@ client.on("messageCreate", (msg) => {
 		const fileName = url
 			.replace(/https?:\/+/, "")
 			.replaceAll("/", "-")
-			.replace("?.mp4", ".mp4")
+			.split("?")[0] // test.png?arg=xx -> test.png
 		const filePath = `${downloadDir}/${fileName}`
 
 		// skip if file exists
