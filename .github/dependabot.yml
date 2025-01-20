@@ -13,3 +13,10 @@ updates:
     directory: "/"
     schedule:
       interval: monthly
+    groups:
+      # Group updates for dependencies
+      # into a single pull request
+      prettier:
+        patterns:
+          - "prettier"
+          - "eslint-plugin-prettier"
