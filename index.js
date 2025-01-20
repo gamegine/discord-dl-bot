@@ -15,7 +15,7 @@ const downloadDir =
 	config.DOWNLOAD_DIR || process.env.DOWNLOAD_DIR || "./download"
 // download files types (extensions)
 const downloadTypes = new RegExp(
-	config.FILETYPES || process.env.FILETYPES || /\.(jpg|jpeg|png|gif|mp4)$/
+	config.FILETYPES || process.env.FILETYPES || /\.(jpg|jpeg|png|gif|mp4)$/,
 )
 // create new discord client
 const client = new Discord.Client({
