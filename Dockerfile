@@ -1,4 +1,4 @@
-FROM node:23.6.0-alpine
+FROM node:23.7.0-alpine
 WORKDIR /app
 ENV NODE_ENV=production
 # Install app dependencies
