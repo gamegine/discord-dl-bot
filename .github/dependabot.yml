@@ -20,7 +20,7 @@ updates:
     groups:
       # Group updates for dependencies
       # into a single pull request
-      prettier:
+      lint:
         patterns:
-          - "prettier"
-          - "eslint-plugin-prettier"
+          - "*prettier*"
+          - "*eslint*"
