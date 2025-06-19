@@ -6,7 +6,6 @@ const https = require("https")
 const Discord = require("discord.js")
 
 // load config.json if exists
-// eslint-disable-next-line import/no-unresolved
 const config = fs.existsSync("./config.json") ? require("./config.json") : {}
 // load discord token from config or env
 const token = config.DISCORD_TOKEN || process.env.DISCORD_TOKEN
@@ -29,7 +28,6 @@ const client = new Discord.Client({
 // discord events
 
 // log when discord client is ready
-// eslint-disable-next-line no-console
 client.on("ready", () => console.log(`Logged in as ${client.user.tag}!`))
 
 // for each message process
@@ -57,7 +55,6 @@ client.on("messageCreate", (msg) => {
 		})
 	}
 	// log all files to download
-	// eslint-disable-next-line no-console
 	if (urls.length > 0) console.log(`start download:\n - ${urls.join("\n - ")}`)
 	// download all  files
 	urls.forEach((url) => {
@@ -69,7 +66,6 @@ client.on("messageCreate", (msg) => {
 
 		// skip if file exists
 		if (fs.existsSync(filePath)) {
-			// eslint-disable-next-line no-console
 			console.log(`   skip file ${fileName} already exists`)
 			return
 		}
@@ -82,12 +78,10 @@ client.on("messageCreate", (msg) => {
 		})
 		// log errors
 		request.on("error", (err) => {
-			// eslint-disable-next-line no-console
 			console.error(`   download error: ${url}\n${err}`)
 		})
 		// log file is downloaded
 		file.on("finish", () => {
-			// eslint-disable-next-line no-console
 			console.log(`   ${fileName} downloaded`)
 		})
 	})
