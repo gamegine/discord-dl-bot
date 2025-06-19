@@ -40,7 +40,7 @@ client.on("messageCreate", (msg) => {
 		// get only urls match type media
 		if (msgUrls) {
 			msgUrls.forEach((url) => {
-				if (url.match(downloadTypes)) {
+				if (url.split("?")[0].match(downloadTypes)) {
 					urls.push(url)
 				}
 			})
