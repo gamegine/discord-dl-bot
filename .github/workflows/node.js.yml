@@ -7,6 +7,7 @@ on:
   push:
     branches: [main, master, dev]
   pull_request:
+  workflow_dispatch:
 
 jobs:
   test:
@@ -21,7 +22,7 @@ jobs:
           cache: "npm"
       - name: install dependencies
         run: npm install
+      - name: lint
+        run: npm run lint
       # - name: test
       #   run: npm test
-      - name: test lint
-        run: npm run test-lint
