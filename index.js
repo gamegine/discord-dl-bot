@@ -28,7 +28,7 @@ const client = new Discord.Client({
 // discord events
 
 // log when discord client is ready
-client.on("ready", () => console.log(`Logged in as ${client.user.tag}!`))
+client.on("clientReady", () => console.log(`Logged in as ${client.user.tag}!`))
 
 // for each message process
 client.on("messageCreate", (msg) => {
