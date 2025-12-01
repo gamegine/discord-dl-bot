@@ -32,6 +32,6 @@
 		"prettier": "^3.6.2"
 	},
 	"dependencies": {
-		"discord.js": "^14.24.2"
+		"discord.js": "^14.25.1"
 	}
 }
